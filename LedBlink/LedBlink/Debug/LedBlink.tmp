@@ -1,0 +1,31 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.7</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>C:\Users\511142157\Documents\Atmel Studio\7.0\LedBlink\LedBlink\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\511142157\Documents\Atmel Studio\7.0\LedBlink\LedBlink\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\avrasm\inc\m328pdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\511142157\Documents\Atmel Studio\7.0\LedBlink\LedBlink\Debug\LedBlink.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>LedBlink.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>LedBlink.map</FILE>
+  <FILE>LedBlink.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <setup><FILE>C:\Users\511142157\Documents\Atmel Studio\7.0\LedBlink\LedBlink\main.asm</FILE><LINE>6</LINE></setup>
+  <loop><FILE>C:\Users\511142157\Documents\Atmel Studio\7.0\LedBlink\LedBlink\main.asm</FILE><LINE>10</LINE></loop>
+  <delay><FILE>C:\Users\511142157\Documents\Atmel Studio\7.0\LedBlink\LedBlink\main.asm</FILE><LINE>17</LINE></delay>
+  <out_delay><FILE>C:\Users\511142157\Documents\Atmel Studio\7.0\LedBlink\LedBlink\main.asm</FILE><LINE>20</LINE></out_delay>
+  <delay_loop><FILE>C:\Users\511142157\Documents\Atmel Studio\7.0\LedBlink\LedBlink\main.asm</FILE><LINE>24</LINE></delay_loop>
+ </LABELS>
+</ASSEMBLER_INFO>
