@@ -1,0 +1,35 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.7</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>c:\users\511142157\Documents\Atmel Studio\7.0\Display_7Seg\Display_7Seg\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>c:\users\511142157\Documents\Atmel Studio\7.0\Display_7Seg\Display_7Seg\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\avrasm\inc\m328pdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>c:\users\511142157\Documents\Atmel Studio\7.0\Display_7Seg\Display_7Seg\Debug\Display_7Seg.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Display_7Seg.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Display_7Seg.map</FILE>
+  <FILE>Display_7Seg.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <Inicializacoes><FILE>c:\users\511142157\Documents\Atmel Studio\7.0\Display_7Seg\Display_7Seg\main.asm</FILE><LINE>6</LINE></Inicializacoes>
+  <Principal><FILE>c:\users\511142157\Documents\Atmel Studio\7.0\Display_7Seg\Display_7Seg\main.asm</FILE><LINE>19</LINE></Principal>
+  <Incr><FILE>c:\users\511142157\Documents\Atmel Studio\7.0\Display_7Seg\Display_7Seg\main.asm</FILE><LINE>26</LINE></Incr>
+  <Decod><FILE>c:\users\511142157\Documents\Atmel Studio\7.0\Display_7Seg\Display_7Seg\main.asm</FILE><LINE>28</LINE></Decod>
+  <Decodifica><FILE>c:\users\511142157\Documents\Atmel Studio\7.0\Display_7Seg\Display_7Seg\main.asm</FILE><LINE>49</LINE></Decodifica>
+  <Atraso><FILE>c:\users\511142157\Documents\Atmel Studio\7.0\Display_7Seg\Display_7Seg\main.asm</FILE><LINE>36</LINE></Atraso>
+  <volta><FILE>c:\users\511142157\Documents\Atmel Studio\7.0\Display_7Seg\Display_7Seg\main.asm</FILE><LINE>38</LINE></volta>
+  <Tabela><FILE>c:\users\511142157\Documents\Atmel Studio\7.0\Display_7Seg\Display_7Seg\main.asm</FILE><LINE>67</LINE></Tabela>
+  <le_tab><FILE>c:\users\511142157\Documents\Atmel Studio\7.0\Display_7Seg\Display_7Seg\main.asm</FILE><LINE>59</LINE></le_tab>
+ </LABELS>
+</ASSEMBLER_INFO>
