@@ -1,49 +1,52 @@
 /*
 * Unifacs - 2019.2
 * Washington M Santos
-* Engenharia de Computação
-* Microcontroladores e Aplicações
-* Prática - Iterrupção + Blink
-* Professor Euclério
+* Engenharia de ComputaÃ§Ã£o
+* Microcontroladores e AplicaÃ§Ãµes
+* PrÃ¡tica - IterrupÃ§Ã£o + Blink duplo
+* Professor EuclÃ©rio
 */
 .org 0x0000
 rjmp setup
+.org 0x0004
 rjmp EXT_INT1
 
 setup:
-/*===========================Configurações de Interrupção================================*/
+/*===========================ConfiguraÃ§Ãµes de InterrupÃ§Ã£o================================*/
+	LDI r16, HIGH(RAMEND)
+	OUT SPH, r16
+	LDI r16, LOW(RAMEND)
+	OUT SPL, r16
+/*===========================ConfiguraÃ§Ãµes de InterrupÃ§Ã£o================================*/
 	SEI					
 	LDI r16, 0b00000011
 	OUT EIMSK, r16
 	LDI r16, 0b00000000
 	STS EICRA, r16
-/*===========================Configurações de Interrupção================================*/
+/*===========================ConfiguraÃ§Ãµes dO LED================================*/
 	LDI r16, 0xff
 	OUT DDRB, r16
-	LDI r16, 0x00
-	OUT PortB,r16
-/*===========================Configurações de Interrupção================================*/
+/*===========================ConfiguraÃ§Ãµes d0 BOTÃ‚O================================*/
 	LDI r16, 0x00
 	OUT DDRD, r16
 	LDI r16, 0xff
 	OUT PortD, r16
-	CBI PortB, PB5
 	NOP
+
+
 loop:
-	CBI PortB, PB5
-	SBIC PinD, PD3
-	RJMP loop
-
-RCALL delay/*Essa chamada não é obrigatória*/
-
-/*===========================Instrução de Interrupção================================*/
-EXT_INT1:
 	SBI PortB, PB5
 	RCALL delay
 	CBI PortB, PB5
 	RCALL delay
-	SBIS PinD, PD3
-	RJMP EXT_INT1
+RJMP loop
+
+/*===========================InstruÃ§Ã£o de InterrupÃ§Ã£o================================*/
+EXT_INT1:
+	SBI PortB, PB0
+	RCALL delay
+	CBI PortB, PB0
+	RCALL delay
 	RETI
 
 delay:
