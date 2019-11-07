@@ -36,7 +36,7 @@ loop:
 
 	SBI PORTD, WR6
 
-	/*Set saída*/
+	/*Set entrada*/
 	LDI r16, 0x00
 	OUT DDRB, r16
 	/***********/
