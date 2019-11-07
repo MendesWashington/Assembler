@@ -1,10 +1,10 @@
 /*
-*
-*
-*
-*
-*
-*
+* Unifacs - 2019.2
+* Washington M Santos
+* Engenharia de Computação
+* Microcontroladores e Aplicações
+* Prática - Iterrupção + Blink duplo
+* Professor Euclério
 */
 
 .equ RD7 = PD4
