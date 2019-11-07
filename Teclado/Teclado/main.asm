@@ -82,10 +82,10 @@ RJMP loop
 
 ligar_led:
 	SBI PORTD, LED
-	SBIS PINB,PB3
+	SBIS PINB, PB3 | PB2| PB1| PB0
 	RJMP ligar_led
 	CBI PORTD, LED
-	JMP ligar_led
+	JMP loop
 
 /*Configura os pinos da PORTB como entrada*/
 setEntrada:
@@ -93,7 +93,7 @@ setEntrada:
 	OUT DDRB, r16
 	RJMP Ler_Linha1
 
-/*Configura os pinos da PORTB como saída*/
+/*Configura os pinos da PORTB como saÃ­da*/
 setSaida:
 	LDI r16, 0xFF
 	OUT DDRB, r16
