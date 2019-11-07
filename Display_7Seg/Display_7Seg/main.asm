@@ -1,67 +1,75 @@
-.equ BOTAO = PB0 //BOTAO é o substituto de PB0 na programação
-.equ DISPLAY = PORTD //PORTD é onde está conectado o Display (seg a = LSB)
+/*
+* Unifacs - 2019.2
+* Washington M Santos
+* Engenharia de ComputaÃ§Ã£o
+* Microcontroladores e AplicaÃ§Ãµes
+* PrÃ¡tica - IterrupÃ§Ã£o + Blink duplo
+* Professor EuclÃ©rio
+*/
+.equ BOTAO = PB0 //BOTAO Ã© o substituto de PB0 na programaÃ§Ã£o
+.equ DISPLAY = PORTD //PORTD Ã© onde estÃ¡ conectado o Display (seg a = LSB)
 .def AUX = R16; //R16 tem agora o nome de AUX
 //---------------------------------------------------------------------------------
 .ORG 0x000
 Inicializacoes:
-LDI AUX,0b11111110 //carrega AUX com o valor 0xFE (1 saída, 0 entrada)
-OUT DDRB,AUX //configura PORTB, PB0 entrada e PB1 .. PB7 saídas
+LDI AUX,0b11111110 //carrega AUX com o valor 0xFE (1 saÃ­da, 0 entrada)
+OUT DDRB,AUX //configura PORTB, PB0 entrada e PB1 .. PB7 saÃ­das
 LDI AUX,0xFF
 OUT PORTB,AUX //habilita o pull-up do PB0 (demais pinos em 1)
-OUT DDRD, AUX //PORTD como saída
+OUT DDRD, AUX //PORTD como saÃ­da
 OUT PORTD,AUX //desliga o display
 
-/*Para utilizar os pinos PD0 e PD1 como I/O genérico no Arduino é necessário
-desabilitar as funções TXD e RXD desses pinos*/
+/*Para utilizar os pinos PD0 e PD1 como I/O genÃ©rico no Arduino Ã© necessÃ¡rio
+desabilitar as funÃ§Ãµes TXD e RXD desses pinos*/
 STS UCSR0B,R1 /*carrega o valor 0x00 (default de R1) em USCR0B,
 como ele esta na SRAM, usa-se STS*/
 //-----------------------------------------------------------------------------------
 Principal:
-SBIC PINB,BOTAO //verifica se o botão foi pressionado, senão
-RJMP Principal //volta e fica preso no laço Principal
-CPI AUX,0x0F //compara se valor é máximo
-BRNE Incr //se não for igual, incrementa; senão, zera valor
+SBIC PINB,BOTAO //verifica se o botÃ£o foi pressionado, senÃ£o
+RJMP Principal //volta e fica preso no laÃ§o Principal
+CPI AUX,0x0F //compara se valor Ã© mÃ¡ximo
+BRNE Incr //se nÃ£o for igual, incrementa; senÃ£o, zera valor
 LDI AUX,0x00
 RJMP Decod
 Incr:
 INC AUX
 Decod:
-RCALL Decodifica //chama sub-rotina de decodificação
-RCALL Atraso /*incremento automático do display se o botão ficar
+RCALL Decodifica //chama sub-rotina de decodificaÃ§Ã£o
+RCALL Atraso /*incremento automÃ¡tico do display se o botÃ£o ficar
 pressionado*/
-RJMP Principal //volta ler botão
+RJMP Principal //volta ler botÃ£o
 //-----------------------------------------------------------------------------------
-//SUB-ROTINA de atraso - Aprox. 0,2 s à 16 MHz
+//SUB-ROTINA de atraso - Aprox. 0,2 s Ã  16 MHz
 //-----------------------------------------------------------------------------------
 Atraso:
-LDI R19,16 //repete os laços abaixo 16 vezes
+LDI R19,16 //repete os laÃ§os abaixo 16 vezes
 volta:
 DEC R17 //decrementa R17
 BRNE volta //enquanto R17 > 0 fica decrementando R17
 DEC R18 //decrementa R18
 BRNE volta //enquanto R18 > 0 volta a decrementar R17
-DEC R19 //decrementa R19, começa com 0x02
+DEC R19 //decrementa R19, comeÃ§a com 0x02
 BRNE volta
 RET
 //-----------------------------------------------------------------------------------
 //SUB-ROTINA que decodifica um valor de 0 -> 15 para o display
 //-----------------------------------------------------------------------------------
 Decodifica:
-LDI ZH,HIGH(Tabela<<1) /*carrega o endereço da tabela no registrador Z, de
+LDI ZH,HIGH(Tabela<<1) /*carrega o endereÃ§o da tabela no registrador Z, de
 16 bits (trabalha como um ponteiro)*/
-LDI ZL,LOW(Tabela<<1) /*deslocando a esquerda todos os bits, pois o bit 0 é
-para a seleção do byte alto ou baixo no end. de memória*/
-ADD ZL,AUX /*soma posição de memória correspondente ao nr. a
-apresentar na parte baixa do endereço*/
-BRCC le_tab /*se houve Carry, incrementa parte alta do endereço,
-senão lê diretamente a memória*/
+LDI ZL,LOW(Tabela<<1) /*deslocando a esquerda todos os bits, pois o bit 0 Ã©
+para a seleÃ§Ã£o do byte alto ou baixo no end. de memÃ³ria*/
+ADD ZL,AUX /*soma posiÃ§Ã£o de memÃ³ria correspondente ao nr. a
+apresentar na parte baixa do endereÃ§o*/
+BRCC le_tab /*se houve Carry, incrementa parte alta do endereÃ§o,
+senÃ£o lÃª diretamente a memÃ³ria*/
 INC ZH
 le_tab:
-LPM R0,Z //lê valor em R0
+LPM R0,Z //lÃª valor em R0
 OUT DISPLAY,R0 //mostra no display
 RET
 //-----------------------------------------------------------------------------------//
-// Tabela p/ decodificar o display: como cada endereço da memória flash é de 16 bits,
-// acessa-se a parte baixa e alta na decodificação
+// Tabela p/ decodificar o display: como cada endereÃ§o da memÃ³ria flash Ã© de 16 bits,
+// acessa-se a parte baixa e alta na decodificaÃ§Ã£o
 //-----------------------------------------------------------------------------------//
 Tabela: .dw 0x7940, 0x3024, 0x1219, 0x7802, 0x1800, 0x0308, 0x2146, 0x0E06
