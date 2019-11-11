@@ -50,10 +50,91 @@ loop:
 	RCALL ligar_led2
 	RCALL ligar_led3
 	RCALL ligar_led4
-	RJMP loop
 	RCALL delay
 	/***********************************************************************/
 
+	/***********************************************************************/
+	RCALL setSaida
+	RCALL delay
+	LDI r16, 0b00001101
+	OUT PORTB, r16
+	SBI PORTD, WR
+	SBI PORTD, RD
+	RCALL delay
+	CBI PORTD, WR
+	RCALL delay
+	SBI PORTD, WR
+	CBI PORTD, RD
+	RCALL delay
+	/*Limpo a saída do registrador*/
+	LDI r16, 0X00
+	OUT PORTB, r16
+	RCALL delay
+	RCALL setEntrada
+	RCALL delay
+	IN r17, PINB
+	Linha2:
+	RCALL ligar_led1
+	RCALL ligar_led2
+	RCALL ligar_led3
+	RCALL ligar_led4
+	RCALL delay
+	/***********************************************************************/
+
+	/***********************************************************************/
+	RCALL setSaida
+	RCALL delay
+	LDI r16, 0b00001011
+	OUT PORTB, r16
+	SBI PORTD, WR
+	SBI PORTD, RD
+	RCALL delay
+	CBI PORTD, WR
+	RCALL delay
+	SBI PORTD, WR
+	CBI PORTD, RD
+	RCALL delay
+	/*Limpo a saída do registrador*/
+	LDI r16, 0X00
+	OUT PORTB, r16
+	RCALL delay
+	RCALL setEntrada
+	RCALL delay
+	IN r17, PINB
+	Linha3:
+	RCALL ligar_led1
+	RCALL ligar_led2
+	RCALL ligar_led3
+	RCALL ligar_led4
+	RCALL delay
+	/***********************************************************************/
+
+	/***********************************************************************/
+	RCALL setSaida
+	RCALL delay
+	LDI r16, 0b00000111
+	OUT PORTB, r16
+	SBI PORTD, WR
+	SBI PORTD, RD
+	RCALL delay
+	CBI PORTD, WR
+	RCALL delay
+	SBI PORTD, WR
+	CBI PORTD, RD
+	RCALL delay
+	/*Limpo a saída do registrador*/
+	LDI r16, 0X00
+	OUT PORTB, r16
+	RCALL delay
+	RCALL setEntrada
+	RCALL delay
+	IN r17, PINB
+	Linha4:
+	RCALL ligar_led1
+	RCALL ligar_led2
+	RCALL ligar_led3
+	RCALL ligar_led4
+	RCALL delay
 	/***********************************************************************/
 RJMP loop
 
@@ -95,7 +176,7 @@ setEntrada:
 	RET
 
 delay:
-	LDI r16, 2 /*Escreve o valor 8 em Hexa no registrador r16*/
+	LDI r16, 1 /*Escreve o valor 8 em Hexa no registrador r16*/
 
 out_delay:
 	LDI r24, low(3037)
